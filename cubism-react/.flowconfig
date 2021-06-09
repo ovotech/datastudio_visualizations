@@ -1,0 +1,15 @@
+[include]
+<PROJECT_ROOT>/src/.*
+
+[ignore]
+<PROJECT_ROOT>/src/.*\.stories\.js
+
+[libs]
+
+[options]
+module.system=haste
+module.file_ext=.js
+module.file_ext=.json
+module.file_ext=.jsx
+module.file_ext=.css
+module.file_ext=.scss

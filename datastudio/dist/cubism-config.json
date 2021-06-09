@@ -1,0 +1,125 @@
+{
+  "data": [
+    {
+      "id": "dimension",
+      "label": "Dimension",
+      "elements": [
+        {
+          "id": "dimension1",
+          "label": "first dimension",
+          "type": "DIMENSION",
+          "options": {
+            "min": 1,
+            "max": 3,
+            "supportedTypes": [
+              "TIME"
+            ]
+          }
+        },
+        {
+          "id": "dimension2",
+          "label": "second dimension",
+          "type": "DIMENSION",
+          "options": {
+            "min": 1,
+            "max": 3,
+            "supportedTypes": [
+              "DEFAULT"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "metric",
+      "label": "Metric",
+      "elements": [
+        {
+          "id": "metric1",
+          "label": "metric",
+          "type": "METRIC",
+          "options": {
+            "min": 1,
+            "max": 1
+          }
+        }
+      ]
+    }
+  ],
+  "style": [
+    {
+      "id": "colors",
+      "label": "Highlight Colors",
+      "elements": [
+        {
+          "id": "accentColor",
+          "label": "Accent Color",
+          "type": "SELECT_SINGLE",
+          "defaultValue": "fall",
+          "options": [
+            {
+              "label": "Summer",
+              "value": "summer"
+            },
+            {
+              "label": "Fall",
+              "value": "fall"
+            }
+          ]
+        },
+        {
+          "id": "reverseColor",
+          "label": "Show reverse color",
+          "defaultValue": false,
+          "type": "CHECKBOX"
+        },
+        {
+          "id": "fillColor",
+          "label": "Fill Color",
+          "defaultValue": {
+            "color": "#0000ff"
+          },
+          "type": "FILL_COLOR"
+        },
+        {
+          "id": "textOpacity",
+          "label": "Text Opacity",
+          "defaultValue": 0.2,
+          "type": "OPACITY"
+        },
+        {
+          "id": "customText",
+          "label": "Custom Text",
+          "defaultValue": "0.2",
+          "type": "TEXTINPUT"
+        }
+      ]
+    },
+    {
+      "id": "text",
+      "label": "Highlight Text",
+      "elements": [
+        {
+          "id": "textFontSize",
+          "label": "Font size",
+          "defaultValue": 10,
+          "type": "FONT_SIZE"
+        },
+        {
+          "id": "font",
+          "label": "Font family",
+          "defaultValue": "Arial",
+          "type": "FONT_FAMILY"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "interactionsConfigId",
+      "supportedActions": [
+        "FILTER"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+// @flow strict
+import Immutable from "immutable";
+import type { RecordFactory } from "immutable";
+export type Dateable = typeof undefined | QuantizableDateRecord | Date | string | number;
+type RecordProps = {
+  year: number,
+  month: number,
+  day: number,
+  hour: number,
+  minute: number,
+  second: number,
+};
+const QuantizableDateRecordFactory: RecordFactory<RecordProps> = Immutable.Record({
+  year: 0,
+  month: 1,
+  day: 1,
+  hour: 0,
+  minute: 0,
+  second: 0
+});
+declare export default class QuantizableDateRecord extends QuantizableDateRecordFactory {
+  static DateRegex: RegExp,
+  static MsPerSecond: number,
+  static MsPerMinute: number,
+  static MsPerHour: number,
+  static MsPerDay: number,
+  static MsPerWeek: number,
+  static detectLevel(dateMin: Dateable, dateMax: Dateable, buckets: number): number,
+  static quantize(date: Dateable, level: number): QuantizableDateRecord,
+  static genQuantizedDates(start: QuantizableDateRecord, end: QuantizableDateRecord, level: number): Iterable<QuantizableDateRecord>,
+  constructor(date: Dateable): any,
+  equals(qd: QuantizableDateRecord): boolean,
+  lessThan(qd: QuantizableDateRecord): boolean,
+  greaterThan(qd: QuantizableDateRecord): boolean,
+  toISOParts(level: number): [number, number, number, number, number, number],
+  toISOString(level: number): string,
+  toDate(level: number): Date,
+  toMillis(level: number): number,
+  toQuantizableDate(level: number): QuantizableDateRecord,
+  addMillis(millis: number): QuantizableDateRecord,
+}

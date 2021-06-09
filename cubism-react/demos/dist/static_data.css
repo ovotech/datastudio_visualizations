@@ -1,0 +1,75 @@
+body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  border: 0;
+  border-bottom: 1px solid black;
+  margin: 0;
+  padding: 0;
+}
+
+._3C4hyYzDz0NLykh2Pib0JH {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+._2s5r0lEi5kPXjZ8ZyYQmfU {
+  position: relative;
+}
+
+.AeeYVgut0n5mia4zHnNuV {
+  background-color: white;
+  position: absolute;
+  right: 0;
+}
+
+.AeeYVgut0n5mia4zHnNuV * {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+}
+
+.AeeYVgut0n5mia4zHnNuV > svg._2QKkE2YoAUKDREif7RvqsC {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  cursor: crosshair;
+}
+
+._3Gr8IL_dmyLYlNYqO7Tbjq {
+  background-color: white;
+  z-index: 1000;
+}
+
+._HcvKr8xP48xrEV1k6ybp {
+  position: relative;
+}
+
+._HcvKr8xP48xrEV1k6ybp > svg._2QKkE2YoAUKDREif7RvqsC {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.apnCJed1kfaiQaTlD4AnN {
+  color: #000;
+}
+
+svg g._1gcsyecs5V9z6z5Wyg6NV text {
+  font-size: 10px;
+}
+
+.ReactModal__Overlay {
+  z-index: 9000;
+  color: black;
+}
+

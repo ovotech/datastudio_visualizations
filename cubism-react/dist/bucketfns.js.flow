@@ -1,0 +1,11 @@
+// @flow strict
+export type BucketFn = (values: ?Iterable<number>) => number;
+export type BucketFns = "sum" | "average";
+export const bucketFns: {
+  [BucketFns]: BucketFn
+} = {
+  sum: bucketSum,
+  average: bucketAverage
+};
+declare function bucketSum(values: ?Iterable<number>): number;
+declare function bucketAverage(values: ?Iterable<number>): number;

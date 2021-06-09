@@ -84,8 +84,18 @@ var CubismTimebars = /*#__PURE__*/function (_React$PureComponent) {
               break;
 
             case _QuantizableDateRecord["default"].MsPerMinute:
-            case _QuantizableDateRecord["default"].MsPerSecond:
               if (date.get("minute") == 0) {
+                add = (0, _dateformat["default"])(date.toMillis(), "HH:MM", true);
+
+                if (date.get("hour") == 0) {
+                  add = (0, _dateformat["default"])(date.toMillis(), "dd/mm", true);
+                }
+              }
+
+              break;
+
+            case _QuantizableDateRecord["default"].MsPerSecond:
+              if (date.get("second") == 0) {
                 add = (0, _dateformat["default"])(date.toMillis(), "HH:MM", true);
 
                 if (date.get("hour") == 0) {

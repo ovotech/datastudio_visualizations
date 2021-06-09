@@ -1,0 +1,12 @@
+{
+  "id": "cubism",
+  "name": "Cubism",
+  "description": "Cubism style charts",
+  "iconUrl": "https://storage.googleapis.com/orion-sre-datastudio-viz-dev/cubism.png",
+  "infoUrl": "https://storage.googleapis.com/orion-sre-datastudio-viz-dev/cubism.html",
+  "resource": {
+    "js": "gs://orion-sre-datastudio-viz-dev/cubism.js",
+    "config": "gs://orion-sre-datastudio-viz-dev/cubism-config.json",
+    "css": "gs://orion-sre-datastudio-viz-dev/cubism.css"
+  }
+}

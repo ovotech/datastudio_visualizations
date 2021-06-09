@@ -1,0 +1,13 @@
+// @flow strict
+import * as React from "react";
+import Immutable from "immutable";
+import dateformat from "dateformat";
+import QuantizableDateRecord from "./QuantizableDateRecord";
+type Props = {|
+  quantizedDates: Immutable.List<QuantizableDateRecord>,
+  quantizationLevel: number,
+  width: number,
+|};
+declare export default class CubismTimebars extends React.PureComponent<Props> {
+  render(): React.Node
+}

@@ -1,0 +1,17 @@
+// @flow strict
+import * as React from "react";
+import Immutable from "immutable";
+import type { RecordOf, RecordFactory } from "immutable";
+export type LayoutProps = {|
+  width: number,
+  height: number,
+|};
+export type LayoutType = RecordOf<LayoutProps>;
+export const Layout: RecordFactory<LayoutProps> = Immutable.Record({
+  width: 0,
+  height: 0
+});
+export type LayoutContextType = React.Context<LayoutType>;
+const context: LayoutContextType = React.createContext(Layout());
+context.displayName = "LayoutContext";
+export default context;

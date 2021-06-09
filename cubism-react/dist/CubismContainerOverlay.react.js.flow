@@ -1,0 +1,31 @@
+// @flow strict
+import * as React from "react";
+import CubismGraph from "./CubismGraph.react";
+import CubismGraphOverlay from "./CubismGraphOverlay.react";
+import CubismTimebar from "./CubismTimebar.react";
+import { bucketFns } from "./bucketfns";
+import type { DataUnbucketed } from "./types";
+import type { BucketFn } from "./bucketfns";
+import type QuantizableDateRecord from "./QuantizableDateRecord";
+import type Immutable from "immutable";
+import * as css from "./cubism.module.css";
+type OnMouseEvent = (event: MouseEvent) => void;
+export type OnHover = (?number, ?QuantizableDateRecord) => void;
+type Props = {|
+  graphCount: number,
+  width: number,
+  quantizedDates: Immutable.List<QuantizableDateRecord>,
+  onHover: OnHover,
+  offsetX: number,
+|};
+type State = {|
+  hover: ?number,
+  hoverTime: ?QuantizableDateRecord,
+|};
+declare export default class CubismContainer extends React.PureComponent<Props, State> {
+  state: State,
+  render(): React.Node,
+  onMouseOver: OnMouseEvent,
+  onMouseOut: OnMouseEvent,
+  onMouseMove: OnMouseEvent,
+}

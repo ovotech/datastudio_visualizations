@@ -1,0 +1,6 @@
+dist
+*/dist/*.js
+dev
+node_modules
+src/dev-data.json
+src/*.scss.d.ts

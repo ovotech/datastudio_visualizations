@@ -1,0 +1,30 @@
+// @flow strict
+import * as React from "react";
+import Immutable from "immutable";
+import type { RecordOf, RecordFactory } from "immutable";
+import DataContext, { Data } from "./CubismDataContext";
+import LayoutContext from "./CubismLayoutContext";
+import type { DataType, DataContextType } from "./CubismDataContext";
+import type { LayoutType } from "./CubismLayoutContext";
+import QuantizableDateRecord from "./QuantizableDateRecord"; // Context
+
+export type DateQuantProps = {|
+  quantizationLevel: number
+|};
+export type DateQuantType = RecordOf<DateQuantProps>;
+export const DateQuant: RecordFactory<DateQuantProps> = Immutable.Record({
+  quantizationLevel: 0
+});
+export type DateQuantContextType = React.Context<DateQuantType>;
+export const DateQuantContext: DateQuantContextType = React.createContext(DateQuant());
+DateQuantContext.displayName = "DateQuantContext"; // Component
+
+type Props = {
+  quantizationLevel?: ?number,
+  children: React.Node,
+};
+declare export default class CubismDataDateQuantization extends React.PureComponent<Props> {
+  static contextType: DataContextType,
+  context: DataType,
+  render(): React.Node,
+}

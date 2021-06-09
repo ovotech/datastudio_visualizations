@@ -1,0 +1,40 @@
+// @flow strict
+import * as React from "react";
+import CubismContainerOverlay from "./CubismContainerOverlay.react";
+import CubismGraph from "./CubismGraph.react";
+import CubismGraphOverlay from "./CubismGraphOverlay.react";
+import CubismTimebar from "./CubismTimebar.react";
+import type { ReactObjectRef, DataUnbucketed } from "./types";
+import type { BucketFn } from "./bucketfns";
+import type QuantizableDateRecord from "./QuantizableDateRecord";
+import Immutable from "immutable";
+import type { OnHover } from "./CubismContainerOverlay.react";
+import type { CombinedType, CombinedContextType } from "./CubismCombinedContext.react";
+import { CombinedContext } from "./CubismCombinedContext.react";
+import { bucketFns } from "./bucketfns";
+import * as css from "./cubism.module.css";
+import CubismWraps, { WrapsContext } from "./CubismWraps.react";
+import { SettingsContext } from "./CubismSettings.react";
+type Props = {|
+  width: number,
+  scrollY: number,
+  debug?: ?React.Node,
+|};
+type State = {|
+  hover: ?number,
+  hoverTime: ?QuantizableDateRecord,
+  offsetX: number,
+|};
+const WrapColors = Immutable.List(["#08519c", "#3182bd", "#6baed6", "#bdd7e7", "#bae4b3", "#74c476", "#31a354", "#006d2c"]);
+const WrapPositive = WrapColors.slice(4);
+const WrapNegative = WrapColors.slice(0, 4).reverse();
+declare export default class CubismContainer extends React.PureComponent<Props, State> {
+  static contextType: CombinedContextType,
+  context: CombinedType,
+  state: State,
+  containerRef: ReactObjectRef<"div">,
+  componentDidUpdate(): any,
+  componentDidMount(): any,
+  render(): React.Node,
+  onHover: OnHover,
+}

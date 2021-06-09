@@ -1,0 +1,28 @@
+// @flow strict
+import * as React from "react";
+import Modal from "react-modal";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import QuantizableDateRecord from "./QuantizableDateRecord";
+import type { BucketFns } from "./bucketfns";
+import type Immutable from "immutable";
+import type { DataUnbucketed } from "./types";
+import type { CombinedType, CombinedContextType } from "./CubismCombinedContext.react";
+import { CombinedContext } from "./CubismCombinedContext.react";
+import { WrapsContext } from "./CubismWraps.react";
+import { DateQuantContext } from "./CubismDataDateQuantization.react";
+import * as css from "./cubism.module.css";
+type Props = {||};
+type State = {|
+  dataModalOpen: boolean
+|};
+declare function QuantizedDateLevel(props: {
+  quantizationLevel: number
+}): React.Node;
+declare export default class CubismDebug extends React.PureComponent<Props, State> {
+  static contextType: CombinedContextType,
+  context: CombinedType,
+  state: State,
+  render(): React.Node,
+  dataModalOpen: () => void,
+  dataModalClose: () => void,
+}

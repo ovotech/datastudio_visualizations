@@ -1,0 +1,13 @@
+body {
+    background-color: navy;
+    color: rgb(255, 255, 255);
+    font-family: "Droid Sans";
+}
+
+body > div#cubismContainerDiv {
+    width: 800px;
+    height: 600px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}

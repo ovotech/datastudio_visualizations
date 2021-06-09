@@ -1,0 +1,29 @@
+// @flow strict
+import * as React from "react";
+import Immutable from "immutable";
+import type { RecordOf, RecordFactory } from "immutable";
+import type { BucketFns } from "./bucketfns"; // Context
+
+export type SettingsProps = {|
+  bucketFn: BucketFns,
+  graphHeight: number,
+  timebarHeight: number,
+|};
+export type SettingsType = RecordOf<SettingsProps>;
+const defaultSettings: SettingsProps = {
+  bucketFn: "sum",
+  graphHeight: 30,
+  timebarHeight: 40
+};
+export const Settings: RecordFactory<SettingsProps> = Immutable.Record(defaultSettings);
+export type SettingsContextType = React.Context<SettingsType>;
+export const SettingsContext: SettingsContextType = React.createContext(Settings());
+SettingsContext.displayName = "SettingsContext"; // Component
+
+type Props = {| ...SettingsProps,
+  children: React.Node,
+|};
+declare export default class CubismSettings extends React.PureComponent<Props> {
+  static defaultProps: SettingsProps,
+  render(): React.Node,
+}

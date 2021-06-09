@@ -1,0 +1,84 @@
+// @flow strict
+
+import * as React from "react";
+import Immutable from "immutable";
+
+import DataContext, { Data } from "./CubismDataContext";
+import LayoutContext, { Layout } from "./CubismLayoutContext";
+import { Settings, SettingsContext } from "./CubismSettings.react";
+import { Wraps, WrapsContext } from "./CubismWraps.react";
+
+import type { DataType } from "./CubismDataContext";
+import type { LayoutType } from "./CubismLayoutContext";
+import type { SettingsType } from "./CubismSettings.react";
+import type { WrapsType } from "./CubismWraps.react";
+
+import type { RecordOf, RecordFactory } from "immutable";
+import type { BucketFns } from "./bucketfns";
+
+// Context
+
+export type CombinedProps = {|
+  data: DataType,
+  layout: LayoutType,
+  settings: SettingsType,
+  wraps: WrapsType,
+|};
+
+export type CombinedType = RecordOf<CombinedProps>;
+
+export const Combined: RecordFactory<CombinedProps> = Immutable.Record({
+  data: Data(),
+  layout: Layout(),
+  settings: Settings(),
+  wraps: Wraps(),
+});
+
+export type CombinedContextType = React.Context<CombinedType>;
+
+export const CombinedContext: CombinedContextType = React.createContext(
+  Combined()
+);
+
+CombinedContext.displayName = "CombinedContext";
+
+// Component
+
+type Props = {|
+  children: React.Node,
+|};
+
+export default class CubismCombinedContext extends React.PureComponent<Props> {
+  render(): React.Node {
+    const { children } = this.props;
+
+    return (
+      <DataContext.Consumer>
+        {(data) => (
+          <LayoutContext.Consumer>
+            {(layout) => (
+              <SettingsContext.Consumer>
+                {(settings) => (
+                  <WrapsContext.Consumer>
+                    {(wraps) => (
+                      <CombinedContext.Provider
+                        value={Combined({
+                          data,
+                          layout,
+                          settings,
+                          wraps,
+                        })}
+                      >
+                        {children}
+                      </CombinedContext.Provider>
+                    )}
+                  </WrapsContext.Consumer>
+                )}
+              </SettingsContext.Consumer>
+            )}
+          </LayoutContext.Consumer>
+        )}
+      </DataContext.Consumer>
+    );
+  }
+}

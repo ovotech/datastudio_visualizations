@@ -1,0 +1,76 @@
+body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  border: 0;
+  border-bottom: 1px solid black;
+  margin: 0;
+  padding: 0;
+}
+
+.cubismControllerScroll {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.cubismController {
+  position: relative;
+}
+
+.cubismContainer {
+  background-color: white;
+  position: absolute;
+  right: 0;
+}
+
+.cubismContainer * {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+}
+
+.cubismContainer > svg.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  cursor: crosshair;
+}
+
+.timebar {
+  background-color: white;
+  z-index: 1000;
+}
+
+.cubismGraph {
+  position: relative;
+}
+
+.cubismGraph > svg.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.cubismDebug {
+  color: #000;
+}
+
+svg g.timebars text {
+  font-size: 10px;
+}
+
+:global(.ReactModal__Overlay) {
+  z-index: 9000;
+  color: black;
+}
+
+/*# sourceMappingURL=cubism.module.css.map */

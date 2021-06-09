@@ -110,3 +110,11 @@ repos:
         entry: pipenv run terraform fmt -write=true -diff -recursive
         pass_filenames: false
         always_run: true
+
+      - id: builds
+        name: Build Javascript Libraries
+        stages: [commit]
+        language: system
+        types_or: [javascript, css, scss]
+        entry: make -C datastudio all && make -C cubism-react all
+        pass_filenames: false

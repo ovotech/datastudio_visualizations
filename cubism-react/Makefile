@@ -24,10 +24,10 @@ $(DIST)/%.css: $(SRC)/%.scss
 $(DIST)/%.js.flow: $(SRC)/%.js
 	npx gen-flow-files "$(SRC)" --out-dir "$(DIST)"
 	sed -i 's/"\(.*\)\.scss"/"\1.css"/g' $(DIST)/*.js.flow
+	rm $(DIST)/*.stories.js.flow && true
 
 $(DIST)/%.css.d.ts: $(SRC)/%.scss
 	npx tcm $(DIST)
-	rm $(DIST)/*.stories.js.flow
 
 $(SRC)/%.scss.d.ts: $(SRC)/%.scss
 	npx tcm -p '*.scss' $(SRC)

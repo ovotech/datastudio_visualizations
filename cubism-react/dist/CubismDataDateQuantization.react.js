@@ -87,7 +87,7 @@ var CubismDataDateQuantization = /*#__PURE__*/function (_React$PureComponent) {
         var quantizedDates = _immutable["default"].OrderedSet(_QuantizableDateRecord["default"].genQuantizedDates(dateMin, dateMax.addMillis(1000), detectedQuantizationLevel));
 
         var quantizedData = data.map(function (data) {
-          return _immutable["default"].Map().withMutations(function (output) {
+          return _immutable["default"].OrderedMap().withMutations(function (output) {
             var _iterator = _createForOfIteratorHelper(data.entries()),
                 _step;
 

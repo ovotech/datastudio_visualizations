@@ -67,7 +67,7 @@ export default class CubismDataDateQuantization extends React.PureComponent<Prop
           );
 
           const quantizedData = data.map((data) =>
-            Immutable.Map().withMutations((output) => {
+            Immutable.OrderedMap().withMutations((output) => {
               for (const [unquantizedDate, samples] of data.entries()) {
                 const quantizedDate = QuantizableDateRecord.quantize(
                   unquantizedDate,

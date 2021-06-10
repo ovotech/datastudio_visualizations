@@ -15,7 +15,7 @@ import TimeseriesGenerator from "../common/TimeseriesGenerator";
 
 type Props = {||}
 type State = {|
-  data: Immutable.Map<string, Immutable.Map<QuantizableDateRecord, Immutable.List<number>>>,
+  data: Immutable.Map<string, Immutable.OrderedMap<QuantizableDateRecord, Immutable.List<number>>>,
   series: Immutable.Map<string, { generate: (number) => number }>,
   dateMin: QuantizableDateRecord,
   dateMax: QuantizableDateRecord,
@@ -23,8 +23,8 @@ type State = {|
 
 
 class Wrapper extends React.Component<Props, State> {
-  state = {
-    data: Immutable.Map(),
+  state: State = {
+    data: Immutable.OrderedMap(),
     series: Immutable.Map(),
     dateMin: new QuantizableDateRecord(),
     dateMax: new QuantizableDateRecord(),
@@ -48,7 +48,7 @@ class Wrapper extends React.Component<Props, State> {
     });
     
     const data = series.map((gen) =>
-      Immutable.Map(
+      Immutable.OrderedMap(
         dates.map((date, i) => [date, Immutable.List([gen.generate(date.toMillis(6) / 1000)])])
       )
     );

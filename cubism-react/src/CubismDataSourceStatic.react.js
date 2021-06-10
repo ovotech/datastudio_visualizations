@@ -16,7 +16,7 @@ type Props = {|
   children: React.Node,
   data: Immutable.Map<
     string,
-    Immutable.Map<QuantizableDateRecord, Immutable.List<number>>
+    Immutable.OrderedMap<QuantizableDateRecord, Immutable.List<number>>
   >,
   dataMin: number,
   dataMax: number,

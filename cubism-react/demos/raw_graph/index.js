@@ -21,7 +21,7 @@ const dates = Immutable.List(
 
 const series_generator = new TimeseriesGenerator(100, -100);
 
-const data = Immutable.Map(
+const data = Immutable.OrderedMap(
   dates.map((date, i) => [date, Immutable.List([series_generator.generate(i)])])
 );
 

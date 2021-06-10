@@ -17,9 +17,9 @@ type Props = {|
   dateOverlap: ?QuantizableDateRecord,
 |};
 
-export type DefaultProps = {|
+type DefaultProps = {|
   dateOverlap: ?QuantizableDateRecord,
-|};
+|}
 
 type State = {|
   initialRenderDone: boolean,
@@ -47,21 +47,55 @@ export default class CubismGraph extends React.PureComponent<Props, State> {
       bucketFn,
       width,
       height,
+      dateOverlap,
     } = this.props;
+
+    if (!(quantizedDates.size && samples.size)) return;
 
     const ctx = canvas.getContext("2d");
 
     ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, width, height);
+    if (!this.state.initialRenderDone) {
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    let overlap = 0;
+    let shift = 0;
+    if (dateOverlap == null) {
+      overlap = quantizedDates.size;
+      shift = quantizedDates.size;
+    } else {
+      const lastPrevDate = prevProps.quantizedDates.get(-1);
+      for (const qd of quantizedDates.reverse()) {
+        if (lastPrevDate && lastPrevDate.lessThan(qd)) {
+          shift ++;
+        }
+        if (dateOverlap.lessThan(qd)) {
+          overlap ++;
+        } else {
+          break;
+        }
+      }
+    }
+
+    ctx.drawImage(canvas, 0, 0, width, height, -shift, 0, width, height);
 
     let pixel = width;
     for (const qd of quantizedDates.reverse()) {
+      if (dateOverlap && !dateOverlap.lessThan(qd)) break;
       const sampleValues = samples.get(qd);
       if (sampleValues == null) {
         pixel--;
         continue;
       }
       const sample = bucketFn(sampleValues.toArray());
+
+      ctx.beginPath();
+      ctx.strokeStyle = "white";
+      ctx.moveTo(pixel, height);
+      ctx.lineTo(pixel, 0);
+      ctx.stroke();
+
       for (const [max, color] of wraps.entries()) {
         ctx.beginPath();
         ctx.strokeStyle = color;

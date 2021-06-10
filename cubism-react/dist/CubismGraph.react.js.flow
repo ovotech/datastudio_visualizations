@@ -14,7 +14,7 @@ type Props = {|
   height: number,
   dateOverlap: ?QuantizableDateRecord,
 |};
-export type DefaultProps = {|
+type DefaultProps = {|
   dateOverlap: ?QuantizableDateRecord
 |};
 type State = {|

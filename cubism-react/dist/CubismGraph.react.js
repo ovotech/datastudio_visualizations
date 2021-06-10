@@ -179,3 +179,6 @@ var CubismGraph = /*#__PURE__*/function (_React$PureComponent) {
 }(React.PureComponent);
 
 exports["default"] = CubismGraph;
+(0, _defineProperty2["default"])(CubismGraph, "defaultProps", {
+  dateOverlap: null
+});

@@ -13,12 +13,15 @@ import CubismSettings from "../../dist/CubismSettings.react";
 import TimeseriesGenerator from "../common/TimeseriesGenerator";
 
 
-type Props = {||}
+type Props = {||};
+
 type State = {|
   data: Immutable.Map<string, Immutable.OrderedMap<QuantizableDateRecord, Immutable.List<number>>>,
   series: Immutable.Map<string, { generate: (number) => number }>,
+  dates: Immutable.List<QuantizableDateRecord>,
   dateMin: QuantizableDateRecord,
   dateMax: QuantizableDateRecord,
+  dateOverlap: ?QuantizableDateRecord,
 |}
 
 
@@ -26,8 +29,10 @@ class Wrapper extends React.Component<Props, State> {
   state: State = {
     data: Immutable.OrderedMap(),
     series: Immutable.Map(),
+    dates: Immutable.List(),
     dateMin: new QuantizableDateRecord(),
     dateMax: new QuantizableDateRecord(),
+    dateOverlap: null,
   }
 
   componentDidMount() {
@@ -52,30 +57,33 @@ class Wrapper extends React.Component<Props, State> {
         dates.map((date, i) => [date, Immutable.List([gen.generate(date.toMillis(6) / 1000)])])
       )
     );
-    this.setState({data, series, dateMin, dateMax});
+    this.setState({data, series, dates, dateMin, dateMax});
 
     setInterval(this.updateData, 1000);
   }
 
   updateData = () => {
     const {series} = this.state;
-    let {data, dateMax} = this.state;
+    const {data, dates, dateMin, dateMax} = this.state;
 
-    dateMax = dateMax.addMillis(QuantizableDateRecord.MsPerSecond);
+    const newDateMax = dateMax.addMillis(QuantizableDateRecord.MsPerSecond);
+    const newDateMin = dateMin.addMillis(QuantizableDateRecord.MsPerSecond);
 
-    for (const [name, gen] of series.entries()) {
-      let timeseries = data.get(name);
-      if (timeseries) {
-        timeseries = timeseries.set(dateMax, Immutable.List([gen.generate(dateMax.toMillis(6) / 1000)]));
-        data = data.set(name, timeseries);
-      }
-    }
+    const newData = series.map((gen, key) => 
+      data.get(key, Immutable.OrderedMap())
+      .set(
+        newDateMax,
+        Immutable.List([gen.generate(newDateMax.toMillis(6) / 1000)])
+      ).remove(dateMin)
+    );
 
-    this.setState({data, dateMax})
+    const newDates = dates.slice(1).push(newDateMax);
+
+    this.setState({data: newData, dates: newDates, dateMin: newDateMin, dateMax: newDateMax, dateOverlap: dateMax});
   }
 
   render() {
-    const {data, dateMin, dateMax} = this.state;
+    const {data, dates, dateMin, dateMax, dateOverlap} = this.state;
     return (
       <CubismSettings bucketFn="average">
         <CubismLayoutStatic width={1440} height={1440}>
@@ -83,14 +91,12 @@ class Wrapper extends React.Component<Props, State> {
             data={data}
             dataMin={0}
             dataMax={100}
+            dates={dates}
             dateMin={dateMin}
             dateMax={dateMax}
+            dateOverlap={dateOverlap}
           >
-            <CubismDataDateQuantization
-              quantizationLevel={QuantizableDateRecord.MsPerSecond}
-            >
-              <CubismApp />
-            </CubismDataDateQuantization>
+            <CubismApp />
           </CubismDataSourceStatic>
         </CubismLayoutStatic>
       </CubismSettings>

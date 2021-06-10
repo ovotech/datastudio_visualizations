@@ -117,6 +117,7 @@ var CubismContainer = /*#__PURE__*/function (_React$PureComponent) {
           dataMin = _this$context$data.dataMin,
           dataMax = _this$context$data.dataMax,
           quantizedDates = _this$context$data.dates,
+          dateOverlap = _this$context$data.dateOverlap,
           _this$context$setting = _this$context.settings,
           bucketFn = _this$context$setting.bucketFn,
           graphHeight = _this$context$setting.graphHeight,
@@ -164,7 +165,8 @@ var CubismContainer = /*#__PURE__*/function (_React$PureComponent) {
           subsampleHeight: subsampleHeight,
           bucketFn: _bucketfns.bucketFns[bucketFn],
           width: width,
-          height: graphHeight
+          height: graphHeight,
+          dateOverlap: dateOverlap
         }));
       }), debug ? /*#__PURE__*/React.createElement("div", {
         style: {

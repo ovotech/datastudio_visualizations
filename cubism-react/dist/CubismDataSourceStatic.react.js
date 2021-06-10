@@ -19,6 +19,8 @@ var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime
 
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 var React = _interopRequireWildcard(require("react"));
 
 var _immutable = _interopRequireDefault(require("immutable"));
@@ -54,14 +56,18 @@ var CubismDataSourceStatic = /*#__PURE__*/function (_React$PureComponent) {
           data = _this$props.data,
           dataMin = _this$props.dataMin,
           dataMax = _this$props.dataMax,
+          dates = _this$props.dates,
           dateMin = _this$props.dateMin,
-          dateMax = _this$props.dateMax;
+          dateMax = _this$props.dateMax,
+          dateOverlap = _this$props.dateOverlap;
       var dataComputed = (0, _CubismDataContext.Data)({
         data: data,
         dataMin: dataMin,
         dataMax: dataMax,
+        dates: dates,
         dateMin: dateMin,
-        dateMax: dateMax
+        dateMax: dateMax,
+        dateOverlap: dateOverlap
       });
       return /*#__PURE__*/React.createElement(_CubismDataContext["default"].Provider, {
         value: dataComputed
@@ -72,3 +78,7 @@ var CubismDataSourceStatic = /*#__PURE__*/function (_React$PureComponent) {
 }(React.PureComponent);
 
 exports["default"] = CubismDataSourceStatic;
+(0, _defineProperty2["default"])(CubismDataSourceStatic, "defaultProps", {
+  dates: _immutable["default"].List(),
+  dateOverlap: null
+});

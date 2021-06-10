@@ -14,6 +14,11 @@ type Props = {|
   bucketFn: BucketFn,
   width: number,
   height: number,
+  dateOverlap: ?QuantizableDateRecord,
+|};
+
+export type DefaultProps = {|
+  dateOverlap: ?QuantizableDateRecord,
 |};
 
 type State = {|
@@ -21,6 +26,9 @@ type State = {|
 |};
 
 export default class CubismGraph extends React.PureComponent<Props, State> {
+  static defaultProps: DefaultProps = {
+    dateOverlap: null,
+  };
   state: State = {
     initialRenderDone: false,
   };

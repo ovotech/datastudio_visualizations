@@ -77,7 +77,7 @@ export default class CubismContainer extends React.PureComponent<Props, State> {
 
   render(): React.Node {
     const {
-      data: { data, dataMin, dataMax, dates: quantizedDates },
+      data: { data, dataMin, dataMax, dates: quantizedDates, dateOverlap },
       settings: { bucketFn, graphHeight, timebarHeight },
       wraps: { wraps, subsampleHeight },
     } = this.context;
@@ -115,6 +115,7 @@ export default class CubismContainer extends React.PureComponent<Props, State> {
               bucketFn={bucketFns[bucketFn]}
               width={width}
               height={graphHeight}
+              dateOverlap={dateOverlap}
             />
           </CubismGraphOverlay>
         ))}

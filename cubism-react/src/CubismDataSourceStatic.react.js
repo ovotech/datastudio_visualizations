@@ -20,20 +20,34 @@ type Props = {|
   >,
   dataMin: number,
   dataMax: number,
+  dates: Immutable.List<QuantizableDateRecord>,
   dateMin: QuantizableDateRecord,
   dateMax: QuantizableDateRecord,
+  dateOverlap: ?QuantizableDateRecord,
 |};
 
+type DefaultProps = {|
+  dates: Immutable.List<QuantizableDateRecord>,
+  dateOverlap: ?QuantizableDateRecord,
+|}
+
 export default class CubismDataSourceStatic extends React.PureComponent<Props> {
+  static defaultProps: DefaultProps = {
+    dates: Immutable.List(),
+    dateOverlap: null,
+  };
+
   render(): React.Node {
-    const { data, dataMin, dataMax, dateMin, dateMax } = this.props;
+    const { data, dataMin, dataMax, dates, dateMin, dateMax, dateOverlap } = this.props;
 
     const dataComputed = Data({
       data,
       dataMin,
       dataMax,
+      dates,
       dateMin,
       dateMax,
+      dateOverlap,
     });
 
     return (

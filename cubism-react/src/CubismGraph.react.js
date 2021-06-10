@@ -133,7 +133,7 @@ export default class CubismGraph extends React.PureComponent<Props, State> {
 
   componentDidMount(): void {
     // componentDidUpdate is not called after the initial render, force it.
-    this.forceUpdate();
+    this.componentDidUpdate(this.props);
   }
 
   render(): React.Node {

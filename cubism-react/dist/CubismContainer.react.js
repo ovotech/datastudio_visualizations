@@ -106,7 +106,7 @@ var CubismContainer = /*#__PURE__*/function (_React$PureComponent) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.forceUpdate();
+      this.componentDidUpdate();
     }
   }, {
     key: "render",

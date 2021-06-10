@@ -72,7 +72,7 @@ export default class CubismContainer extends React.PureComponent<Props, State> {
   }
 
   componentDidMount() {
-    this.forceUpdate();
+    this.componentDidUpdate();
   }
 
   render(): React.Node {

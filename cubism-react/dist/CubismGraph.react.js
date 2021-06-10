@@ -206,7 +206,7 @@ var CubismGraph = /*#__PURE__*/function (_React$PureComponent) {
     key: "componentDidMount",
     value: function componentDidMount() {
       // componentDidUpdate is not called after the initial render, force it.
-      this.forceUpdate();
+      this.componentDidUpdate(this.props);
     }
   }, {
     key: "render",

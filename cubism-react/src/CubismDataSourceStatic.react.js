@@ -14,7 +14,7 @@ import CubismLayoutContext, { Layout } from "./CubismLayoutContext";
 
 type Props = {|
   children: React.Node,
-  data: Immutable.Map<
+  data: Immutable.OrderedMap<
     string,
     Immutable.OrderedMap<QuantizableDateRecord, Immutable.List<number>>
   >,

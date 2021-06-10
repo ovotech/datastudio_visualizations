@@ -16,8 +16,8 @@ import TimeseriesGenerator from "../common/TimeseriesGenerator";
 type Props = {||};
 
 type State = {|
-  data: Immutable.Map<string, Immutable.OrderedMap<QuantizableDateRecord, Immutable.List<number>>>,
-  series: Immutable.Map<string, { generate: (number) => number }>,
+  data: Immutable.OrderedMap<string, Immutable.OrderedMap<QuantizableDateRecord, Immutable.List<number>>>,
+  series: Immutable.OrderedMap<string, { generate: (number) => number }>,
   dates: Immutable.List<QuantizableDateRecord>,
   dateMin: QuantizableDateRecord,
   dateMax: QuantizableDateRecord,
@@ -28,7 +28,7 @@ type State = {|
 class Wrapper extends React.Component<Props, State> {
   state: State = {
     data: Immutable.OrderedMap(),
-    series: Immutable.Map(),
+    series: Immutable.OrderedMap(),
     dates: Immutable.List(),
     dateMin: new QuantizableDateRecord(),
     dateMax: new QuantizableDateRecord(),
@@ -47,7 +47,7 @@ class Wrapper extends React.Component<Props, State> {
       )
     );
     
-    const series = Immutable.Map({
+    const series = Immutable.OrderedMap({
       PRN1: new TimeseriesGenerator(100, -100),
       PRN2: { generate: (i) => Math.sin(i / 100) * 100 },
     });

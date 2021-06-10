@@ -24,7 +24,7 @@ const dates = Immutable.List(
   )
 );
 
-const series = Immutable.Map({
+const series = Immutable.OrderedMap({
   PRN1: new TimeseriesGenerator(100, -100),
   PRN2: { generate: (i) => Math.sin(i / 100) * 100 },
 });

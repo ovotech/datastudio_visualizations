@@ -140,8 +140,8 @@ var CubismGraph = /*#__PURE__*/function (_React$PureComponent) {
           var sample = bucketFn(sampleValues.toArray());
           ctx.beginPath();
           ctx.strokeStyle = "white";
-          ctx.moveTo(pixel, height);
-          ctx.lineTo(pixel, 0);
+          ctx.moveTo(pixel - 0.5, height);
+          ctx.lineTo(pixel - 0.5, 0);
           ctx.stroke();
 
           var _iterator3 = _createForOfIteratorHelper(wraps.entries()),
@@ -157,27 +157,27 @@ var CubismGraph = /*#__PURE__*/function (_React$PureComponent) {
               ctx.strokeStyle = color;
 
               if (max > 0) {
-                ctx.moveTo(pixel, height);
+                ctx.moveTo(pixel - 0.5, height);
 
                 if (sample > max) {
-                  ctx.lineTo(pixel, 0);
+                  ctx.lineTo(pixel - 0.5, 0);
                   ctx.stroke();
                 } else if (sample > 0) {
                   var subsample = max - sample;
-                  ctx.lineTo(pixel, height * (subsample / subsampleHeight));
+                  ctx.lineTo(pixel - 0.5, height * (subsample / subsampleHeight));
                   ctx.stroke();
                   break;
                 }
               } else {
-                ctx.moveTo(pixel, 0);
+                ctx.moveTo(pixel - 0.5, 0);
 
                 if (sample < max) {
-                  ctx.lineTo(pixel, height);
+                  ctx.lineTo(pixel - 0.5, height);
                   ctx.stroke();
                 } else if (sample < 0) {
                   var _subsample = Math.abs(max - sample);
 
-                  ctx.lineTo(pixel, height - height * (_subsample / subsampleHeight));
+                  ctx.lineTo(pixel - 0.5, height - height * (_subsample / subsampleHeight));
                   ctx.stroke();
                   break;
                 }

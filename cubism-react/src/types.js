@@ -16,5 +16,5 @@ export type SamplesUnbucketed = Immutable.OrderedMap<
 >;
 export type SamplesBucketed = Immutable.OrderedMap<QuantizableDateRecord, number>;
 
-export type DataUnbucketed = Immutable.Map<string, SamplesUnbucketed>;
-export type DataBucketed = Immutable.Map<string, SamplesBucketed>;
+export type DataUnbucketed = Immutable.OrderedMap<string, SamplesUnbucketed>;
+export type DataBucketed = Immutable.OrderedMap<string, SamplesBucketed>;

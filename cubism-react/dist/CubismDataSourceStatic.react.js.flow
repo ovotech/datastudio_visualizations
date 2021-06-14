@@ -10,7 +10,7 @@ import CubismDataContext, { Data } from "./CubismDataContext";
 import CubismLayoutContext, { Layout } from "./CubismLayoutContext";
 type Props = {|
   children: React.Node,
-  data: Immutable.Map<string, Immutable.OrderedMap<QuantizableDateRecord, Immutable.List<number>>>,
+  data: Immutable.OrderedMap<string, Immutable.OrderedMap<QuantizableDateRecord, Immutable.List<number>>>,
   dataMin: number,
   dataMax: number,
   dates: Immutable.List<QuantizableDateRecord>,

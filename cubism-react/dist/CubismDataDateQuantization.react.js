@@ -76,7 +76,8 @@ var CubismDataDateQuantization = /*#__PURE__*/function (_React$PureComponent) {
           dates = _this$context.dates,
           dateMin = _this$context.dateMin,
           dateMax = _this$context.dateMax,
-          rawData = _this$context.rawData;
+          rawData = _this$context.rawData,
+          dateOverlap = _this$context.dateOverlap;
       var _this$props = this.props,
           quantizationLevel = _this$props.quantizationLevel,
           children = _this$props.children;
@@ -87,7 +88,7 @@ var CubismDataDateQuantization = /*#__PURE__*/function (_React$PureComponent) {
         var quantizedDates = _immutable["default"].OrderedSet(_QuantizableDateRecord["default"].genQuantizedDates(dateMin, dateMax.addMillis(1000), detectedQuantizationLevel));
 
         var quantizedData = data.map(function (data) {
-          return _immutable["default"].Map().withMutations(function (output) {
+          return _immutable["default"].OrderedMap().withMutations(function (output) {
             var _iterator = _createForOfIteratorHelper(data.entries()),
                 _step;
 
@@ -120,7 +121,8 @@ var CubismDataDateQuantization = /*#__PURE__*/function (_React$PureComponent) {
           dates: quantizedDates.toList(),
           dateMin: dateMin,
           dateMax: dateMax,
-          rawData: rawData
+          rawData: rawData,
+          dateOverlap: dateOverlap
         });
         var dateQuantValue = DateQuant({
           quantizationLevel: detectedQuantizationLevel

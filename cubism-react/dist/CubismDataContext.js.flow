@@ -12,6 +12,7 @@ export type DataProps = {|
   dates: Immutable.List<QuantizableDateRecord>,
   dateMin: QuantizableDateRecord,
   dateMax: QuantizableDateRecord,
+  dateOverlap: ?QuantizableDateRecord,
 |};
 export type DataType = RecordOf<DataProps>;
 export const Data: RecordFactory<DataProps> = Immutable.Record({
@@ -21,7 +22,8 @@ export const Data: RecordFactory<DataProps> = Immutable.Record({
   dataMax: 0,
   dates: Immutable.List(),
   dateMin: new QuantizableDateRecord(),
-  dateMax: new QuantizableDateRecord()
+  dateMax: new QuantizableDateRecord(),
+  dateOverlap: null
 });
 export type DataContextType = React.Context<DataType>;
 const context: DataContextType = React.createContext(Data());

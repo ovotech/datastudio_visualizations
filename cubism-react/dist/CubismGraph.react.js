@@ -77,19 +77,60 @@ var CubismGraph = /*#__PURE__*/function (_React$PureComponent) {
           subsampleHeight = _this$props.subsampleHeight,
           bucketFn = _this$props.bucketFn,
           width = _this$props.width,
-          height = _this$props.height;
+          height = _this$props.height,
+          dateOverlap = _this$props.dateOverlap;
+      if (!(quantizedDates.size && samples.size)) return;
       var ctx = canvas.getContext("2d");
       ctx.fillStyle = "white";
-      ctx.fillRect(0, 0, width, height);
+
+      if (!this.state.initialRenderDone) {
+        ctx.fillRect(0, 0, width, height);
+      }
+
+      var overlap = 0;
+      var shift = 0;
+
+      if (dateOverlap == null) {
+        overlap = quantizedDates.size;
+        shift = quantizedDates.size;
+      } else {
+        var lastPrevDate = prevProps.quantizedDates.get(-1);
+
+        var _iterator = _createForOfIteratorHelper(quantizedDates.reverse()),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var qd = _step.value;
+
+            if (lastPrevDate && lastPrevDate.lessThan(qd)) {
+              shift++;
+            }
+
+            if (dateOverlap.lessThan(qd)) {
+              overlap++;
+            } else {
+              break;
+            }
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      }
+
+      ctx.drawImage(canvas, 0, 0, width, height, -shift, 0, width, height);
       var pixel = width;
 
-      var _iterator = _createForOfIteratorHelper(quantizedDates.reverse()),
-          _step;
+      var _iterator2 = _createForOfIteratorHelper(quantizedDates.reverse()),
+          _step2;
 
       try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var qd = _step.value;
-          var sampleValues = samples.get(qd);
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var _qd = _step2.value;
+          if (dateOverlap && !dateOverlap.lessThan(_qd)) break;
+          var sampleValues = samples.get(_qd);
 
           if (sampleValues == null) {
             pixel--;
@@ -97,15 +138,20 @@ var CubismGraph = /*#__PURE__*/function (_React$PureComponent) {
           }
 
           var sample = bucketFn(sampleValues.toArray());
+          ctx.beginPath();
+          ctx.strokeStyle = "white";
+          ctx.moveTo(pixel, height);
+          ctx.lineTo(pixel, 0);
+          ctx.stroke();
 
-          var _iterator2 = _createForOfIteratorHelper(wraps.entries()),
-              _step2;
+          var _iterator3 = _createForOfIteratorHelper(wraps.entries()),
+              _step3;
 
           try {
-            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-              var _step2$value = (0, _slicedToArray2["default"])(_step2.value, 2),
-                  max = _step2$value[0],
-                  color = _step2$value[1];
+            for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+              var _step3$value = (0, _slicedToArray2["default"])(_step3.value, 2),
+                  max = _step3$value[0],
+                  color = _step3$value[1];
 
               ctx.beginPath();
               ctx.strokeStyle = color;
@@ -138,18 +184,18 @@ var CubismGraph = /*#__PURE__*/function (_React$PureComponent) {
               }
             }
           } catch (err) {
-            _iterator2.e(err);
+            _iterator3.e(err);
           } finally {
-            _iterator2.f();
+            _iterator3.f();
           }
 
           pixel--;
           if (pixel < 0) break;
         }
       } catch (err) {
-        _iterator.e(err);
+        _iterator2.e(err);
       } finally {
-        _iterator.f();
+        _iterator2.f();
       }
 
       this.setState({
@@ -160,7 +206,7 @@ var CubismGraph = /*#__PURE__*/function (_React$PureComponent) {
     key: "componentDidMount",
     value: function componentDidMount() {
       // componentDidUpdate is not called after the initial render, force it.
-      this.forceUpdate();
+      this.componentDidUpdate(this.props);
     }
   }, {
     key: "render",
@@ -179,3 +225,6 @@ var CubismGraph = /*#__PURE__*/function (_React$PureComponent) {
 }(React.PureComponent);
 
 exports["default"] = CubismGraph;
+(0, _defineProperty2["default"])(CubismGraph, "defaultProps", {
+  dateOverlap: null
+});

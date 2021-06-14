@@ -30,7 +30,7 @@ const series = Immutable.Map({
 });
 
 const data = series.map((gen) =>
-  Immutable.Map(
+  Immutable.OrderedMap(
     dates.map((date, i) => [date, Immutable.List([gen.generate(i)])])
   )
 );

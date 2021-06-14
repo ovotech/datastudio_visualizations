@@ -43,7 +43,7 @@ export default class CubismDataDateQuantization extends React.PureComponent<Prop
   context: DataType;
 
   render(): React.Node {
-    const { data, dataMin, dataMax, dates, dateMin, dateMax, rawData } =
+    const { data, dataMin, dataMax, dates, dateMin, dateMax, rawData, dateOverlap } =
       this.context;
 
     const { quantizationLevel, children } = this.props;
@@ -67,7 +67,7 @@ export default class CubismDataDateQuantization extends React.PureComponent<Prop
           );
 
           const quantizedData = data.map((data) =>
-            Immutable.Map().withMutations((output) => {
+            Immutable.OrderedMap().withMutations((output) => {
               for (const [unquantizedDate, samples] of data.entries()) {
                 const quantizedDate = QuantizableDateRecord.quantize(
                   unquantizedDate,
@@ -90,6 +90,7 @@ export default class CubismDataDateQuantization extends React.PureComponent<Prop
             dateMin,
             dateMax,
             rawData,
+            dateOverlap,
           });
 
           const dateQuantValue = DateQuant({

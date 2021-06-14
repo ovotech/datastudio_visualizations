@@ -10,12 +10,19 @@ import CubismDataContext, { Data } from "./CubismDataContext";
 import CubismLayoutContext, { Layout } from "./CubismLayoutContext";
 type Props = {|
   children: React.Node,
-  data: Immutable.Map<string, Immutable.Map<QuantizableDateRecord, Immutable.List<number>>>,
+  data: Immutable.Map<string, Immutable.OrderedMap<QuantizableDateRecord, Immutable.List<number>>>,
   dataMin: number,
   dataMax: number,
+  dates: Immutable.List<QuantizableDateRecord>,
   dateMin: QuantizableDateRecord,
   dateMax: QuantizableDateRecord,
+  dateOverlap: ?QuantizableDateRecord,
+|};
+type DefaultProps = {|
+  dates: Immutable.List<QuantizableDateRecord>,
+  dateOverlap: ?QuantizableDateRecord,
 |};
 declare export default class CubismDataSourceStatic extends React.PureComponent<Props> {
-  render(): React.Node
+  static defaultProps: DefaultProps,
+  render(): React.Node,
 }

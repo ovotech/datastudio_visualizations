@@ -26,7 +26,8 @@ var Data = _immutable["default"].Record({
   dataMax: 0,
   dates: _immutable["default"].List(),
   dateMin: new _QuantizableDateRecord["default"](),
-  dateMax: new _QuantizableDateRecord["default"]()
+  dateMax: new _QuantizableDateRecord["default"](),
+  dateOverlap: null
 });
 
 exports.Data = Data;

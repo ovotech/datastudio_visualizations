@@ -28,8 +28,15 @@ export default class CubismTimebars extends React.PureComponent<Props> {
             date.get("hour") == 0 && dateformat(date.toMillis(), "dd/mm", true);
           break;
         case QuantizableDateRecord.MsPerMinute:
-        case QuantizableDateRecord.MsPerSecond:
           if (date.get("minute") == 0) {
+            add = dateformat(date.toMillis(), "HH:MM", true);
+            if (date.get("hour") == 0) {
+              add = dateformat(date.toMillis(), "dd/mm", true);
+            }
+          }
+          break;
+        case QuantizableDateRecord.MsPerSecond:
+          if (date.get("second") == 0) {
             add = dateformat(date.toMillis(), "HH:MM", true);
             if (date.get("hour") == 0) {
               add = dateformat(date.toMillis(), "dd/mm", true);

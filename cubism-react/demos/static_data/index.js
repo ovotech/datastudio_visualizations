@@ -6,12 +6,12 @@ import React from "react";
 import CubismApp from "../../dist/CubismApp.react";
 import Modal from "react-modal";
 import CubismDataDateQuantization from "../../dist/CubismDataDateQuantization.react";
+import CubismDataSourceStatic from "../../dist/CubismDataSourceStatic.react";
 import CubismLayoutStatic from "../../dist/CubismLayoutStatic.react";
 import QuantizableDateRecord from "../../dist/QuantizableDateRecord";
 import CubismSettings from "../../dist/CubismSettings.react";
 import TimeseriesGenerator from "../common/TimeseriesGenerator";
 
-import CubismDataSourceStatic from "./CubismDataSourceStatic.react";
 
 const dateMax = new QuantizableDateRecord(new Date());
 const dateMin = dateMax.addMillis(-QuantizableDateRecord.MsPerDay);

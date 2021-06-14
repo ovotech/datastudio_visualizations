@@ -3,14 +3,14 @@
 import * as React from "react";
 import Immutable from "immutable";
 
-import QuantizableDateRecord from "../../dist/QuantizableDateRecord";
-import type { DataUnbucketed, DataBucketed } from "../../dist/types";
-import type { BucketFn, BucketFns } from "../../dist/bucketfns";
-import type { DataType } from "../../dist/CubismDataContext";
-import type { LayoutType } from "../../dist/CubismLayoutContext";
+import QuantizableDateRecord from "./QuantizableDateRecord";
+import type { DataUnbucketed, DataBucketed } from "./types";
+import type { BucketFn, BucketFns } from "./bucketfns";
+import type { DataType } from "./CubismDataContext";
+import type { LayoutType } from "./CubismLayoutContext";
 
-import CubismDataContext, { Data } from "../../dist/CubismDataContext";
-import CubismLayoutContext, { Layout } from "../../dist/CubismLayoutContext";
+import CubismDataContext, { Data } from "./CubismDataContext";
+import CubismLayoutContext, { Layout } from "./CubismLayoutContext";
 
 type Props = {|
   children: React.Node,

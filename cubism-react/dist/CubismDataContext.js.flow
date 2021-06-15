@@ -1,9 +1,12 @@
 // @flow strict
+
 import * as React from "react";
 import Immutable from "immutable";
+
 import type { RecordOf, RecordFactory } from "immutable";
 import type { DataUnbucketed } from "./types";
 import QuantizableDateRecord from "./QuantizableDateRecord";
+
 export type DataProps = {|
   rawData: any,
   data: DataUnbucketed,
@@ -13,7 +16,9 @@ export type DataProps = {|
   dateMin: QuantizableDateRecord,
   dateMax: QuantizableDateRecord,
 |};
+
 export type DataType = RecordOf<DataProps>;
+
 export const Data: RecordFactory<DataProps> = Immutable.Record({
   rawData: null,
   data: Immutable.Map(),
@@ -21,9 +26,13 @@ export const Data: RecordFactory<DataProps> = Immutable.Record({
   dataMax: 0,
   dates: Immutable.List(),
   dateMin: new QuantizableDateRecord(),
-  dateMax: new QuantizableDateRecord()
+  dateMax: new QuantizableDateRecord(),
 });
+
 export type DataContextType = React.Context<DataType>;
+
 const context: DataContextType = React.createContext(Data());
+
 context.displayName = "DataContext";
+
 export default context;

@@ -12,7 +12,7 @@ import type { BucketFn } from "./bucketfns";
 import type QuantizableDateRecord from "./QuantizableDateRecord";
 import type Immutable from "immutable";
 
-import * as css from "./cubism.module.scss";
+import * as css from "./cubism.module.css";
 
 type OnMouseEvent = (event: MouseEvent) => void;
 export type OnHover = (?number, ?QuantizableDateRecord) => void;

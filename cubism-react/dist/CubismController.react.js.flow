@@ -8,7 +8,7 @@ import QuantizableDateRecord from "./QuantizableDateRecord";
 import { bucketFns } from "./bucketfns";
 import type { BucketFn, BucketFns } from "./bucketfns";
 
-import * as css from "./cubism.module.scss";
+import * as css from "./cubism.module.css";
 import CubismDebug from "./CubismDebug.react";
 import CubismDataContext, { Data } from "./CubismDataContext";
 import CubismLayoutContext from "./CubismLayoutContext";

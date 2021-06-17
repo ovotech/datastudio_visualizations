@@ -19,7 +19,7 @@ import type {
 import { CombinedContext } from "./CubismCombinedContext.react";
 import { bucketFns } from "./bucketfns";
 
-import * as css from "./cubism.module.scss";
+import * as css from "./cubism.module.css";
 import CubismWraps, { WrapsContext } from "./CubismWraps.react";
 import { SettingsContext } from "./CubismSettings.react";
 

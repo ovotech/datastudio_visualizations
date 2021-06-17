@@ -8,7 +8,7 @@ import type { BucketFn } from "./bucketfns";
 import QuantizableDateRecord from "./QuantizableDateRecord";
 import CubismTimebars from "./CubismTimebars.react";
 
-import * as css from "./cubism.module.scss";
+import * as css from "./cubism.module.css";
 import { DateQuantContext } from "./CubismDataDateQuantization.react";
 
 type Props = {|

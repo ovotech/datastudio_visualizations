@@ -17,7 +17,7 @@ import { CombinedContext } from "./CubismCombinedContext.react";
 import { WrapsContext } from "./CubismWraps.react";
 import { DateQuantContext } from "./CubismDataDateQuantization.react";
 
-import * as css from "./cubism.module.scss";
+import * as css from "./cubism.module.css";
 
 type Props = {||};
 

@@ -1,18 +1,23 @@
-import { dest, series, parallel, src } from "gulp";
+import { dest, series, parallel, src, watch as gulp_watch } from "gulp";
 import babel from "gulp-babel";
 import eol from "gulp-eol";
 import sass from "gulp-sass";
 import sourcemaps from "gulp-sourcemaps";
 import run from "gulp-run-command";
-import clean_files from "gulp-clean";
+import del from "del";
+import gtcm from "gulp-typed-css-modules";
+import rename from "gulp-rename";
+import replace from "gulp-replace";
 
 const SRC = "src";
 const DIST = "dist";
 const DEMOS_DIST = "demos/dist";
 
 export function clean() {
-  return src([`${DIST}/**/*`, `${DEMOS_DIST}/**/*`], {read: false})
-    .pipe(clean_files())
+  return del([
+    `${DIST}/**/*`,
+    `${DEMOS_DIST}/**/*`,
+  ]);
 }
 
 export function scss() {
@@ -35,15 +40,41 @@ export async function demos() {
 }
 
 export async function flowfiles() {
-  run(`npx flow-copy-source -i "*.stories.js" ${SRC} ${DIST}`)();
-  // run(`npx gen-flow-files ${SRC} --out-dir ${DIST}/`)();
-  run(`find ${DIST} -type f -exec sed -i 's/"\\(.*\\)\\.scss"/"\\1.css"/g' {} +`)();
-  // run(`rm ${DIST}/*.stories.js.flow`, { ignoreErrors: true })();
+  return src([`${SRC}/*.js`, "!**/*.stories.js"])
+    .pipe(rename((path, file) => {
+      path.extname = ".js.flow";
+    }))
+    .pipe(replace(/"(.*)\.scss"/, '"$1.css"'))
+    .pipe(dest(`${DIST}/`));
 }
 
-export async function css_d_ts() {
-  run(`npx tcm ${DIST}`)();
-  run(`npx tcm -p "*.scss" ${SRC}`)();
+export function css_types_dist() {
+  return src(`${DIST}/*.css`)
+    .pipe(gtcm())
+    .pipe(dest(`${DIST}/`));
 }
 
-export default series(clean, parallel(scss, flowfiles, js), css_d_ts, demos);
+export function css_types_src() {
+  return src(`${SRC}/*.scss`)
+    .pipe(gtcm())
+    .pipe(dest(`${SRC}/`));
+}
+
+export function watch() {
+  gulp_watch(
+    [`${SRC}/*.scss`, `${SRC}/*.js`],
+    { ignoreInitial: false },
+    async () => await series(
+      parallel(scss, flowfiles, js),
+      parallel(css_types_dist, css_types_src),
+      demos,
+    )(),
+  )
+}
+
+export default series(
+  clean,
+  parallel(scss, flowfiles, js),
+  parallel(css_types_dist, css_types_src),
+  demos,
+);

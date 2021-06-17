@@ -8,6 +8,10 @@ See [Square's Cubism.js documentation](https://square.github.io/cubism/) for mor
 ## How do I use this?
 There's an example inside the demos folder, we will be adding to the demos as we progress with the project.
 
+Also see the generated [storybook](gen/storybook/).
+
+Further documentation is incoming.
+
 ## Development flow
 - `npm install --dev`
 - `npx gulp dev` to automatically rebuild artefacts with a live http server for the demos

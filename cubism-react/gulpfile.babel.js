@@ -31,6 +31,20 @@ export async function tests() {
   await run("npx jest")();
 }
 
+export async function storybook() {
+  await run("npx build-storybook -o docs/gen/storybook")();
+}
+
+export function docs_index() {
+  return src("README.md")
+    .pipe(rename((path, file) => {
+      path.basename = "index";
+    }))
+    .pipe(dest("docs/"));
+}
+
+export const docs = parallel(storybook, docs_index);
+
 export function scss() {
   return src(`${SRC}/*.scss`)
     .pipe(sourcemaps.init())
@@ -103,5 +117,5 @@ export default series(
   clean,
   parallel(scss, flowfiles, js),
   parallel(css_types_dist, css_types_src),
-  demos,
+  parallel(docs, demos)
 );

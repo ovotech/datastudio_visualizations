@@ -4,4 +4,4 @@ test:
 flow:
 	npx flow
 
-.PHONY: test upload flow dev css-types all
+.PHONY: test flow

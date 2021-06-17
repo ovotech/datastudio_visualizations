@@ -8,6 +8,9 @@ import del from "del";
 import gtcm from "gulp-typed-css-modules";
 import rename from "gulp-rename";
 import replace from "gulp-replace";
+import browserSync from "browser-sync";
+
+const browserSyncServer = browserSync.create();
 
 const SRC = "src";
 const DIST = "dist";
@@ -60,17 +63,31 @@ export function css_types_src() {
     .pipe(dest(`${SRC}/`));
 }
 
+const watch_series = series(
+  parallel(scss, flowfiles, js),
+  parallel(css_types_dist, css_types_src),
+  demos,
+);
+
 export function watch() {
   gulp_watch(
     [`${SRC}/*.scss`, `${SRC}/*.js`],
     { ignoreInitial: false },
-    series(
-      parallel(scss, flowfiles, js),
-      parallel(css_types_dist, css_types_src),
-      demos,
-    ),
+    watch_series,
   )
 }
+
+export function webserver() {
+  browserSyncServer.init({
+    server: {
+      baseDir: `${DEMOS_DIST}/`,
+    },
+  });
+
+  gulp_watch(`${DEMOS_DIST}/**/*`).on("change", browserSyncServer.reload);
+}
+
+export const dev = parallel(webserver, watch);
 
 export default series(
   clean,

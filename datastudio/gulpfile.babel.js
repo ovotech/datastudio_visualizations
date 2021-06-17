@@ -7,10 +7,16 @@ const browserSyncServer = browserSync.create();
 
 const SRC = "src";
 const DIST = "dist";
-const DEV_DIST = "dev/dist";
+const DEV_DIST = "dist_dev";
+const LOCAL_DEV_DIST = "local_dev/dist";
+const CUBISM_DIST = "../cubism-react/dist";
 
 export async function build() {
   await run("npx webpack --mode production")();
+}
+
+export async function build_dev() {
+  await run("npx webpack --mode development --config webpack.dev.js")();
 }
 
 export async function build_local_dev() {
@@ -26,12 +32,13 @@ export function css_types_src() {
 const build_target = parallel(
   build,
   build_local_dev,
+  build_dev,
   css_types_src,
 );
 
 export function watch() {
   gulp_watch(
-    [`${SRC}/*.scss`, `${SRC}/*.js`],
+    [`${SRC}/*.scss`, `${SRC}/*.js`, `${CUBISM_DIST}/**/*`],
     { ignoreInitial: false },
     build_target,
   )
@@ -40,11 +47,11 @@ export function watch() {
 export function webserver() {
   browserSyncServer.init({
     server: {
-      baseDir: `${DEV_DIST}/`,
+      baseDir: `${LOCAL_DEV_DIST}/`,
     },
   });
 
-  gulp_watch(`${DEV_DIST}/**/*`).on("change", browserSyncServer.reload);
+  gulp_watch(`${LOCAL_DEV_DIST}/**/*`).on("change", browserSyncServer.reload);
 }
 
 export const dev = parallel(webserver, watch);

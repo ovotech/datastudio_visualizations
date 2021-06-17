@@ -59,10 +59,10 @@ const Template = (args) => (
   />
 );
 
-export const Standard = Template.bind({});
+export const Standard: any = Template.bind({});
 Standard.args = {};
 
-export const _60Px = Template.bind({});
+export const _60Px: any = Template.bind({});
 _60Px.args = {
   height: 60,
 };

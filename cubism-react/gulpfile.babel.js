@@ -23,6 +23,14 @@ export function clean() {
   ]);
 }
 
+export async function flow() {
+  await run("npx flow")();
+}
+
+export async function tests() {
+  await run("npx jest")();
+}
+
 export function scss() {
   return src(`${SRC}/*.scss`)
     .pipe(sourcemaps.init())
@@ -64,6 +72,7 @@ export function css_types_src() {
 }
 
 const watch_series = series(
+  flow,
   parallel(scss, flowfiles, js),
   parallel(css_types_dist, css_types_src),
   demos,
@@ -90,6 +99,7 @@ export function webserver() {
 export const dev = parallel(webserver, watch);
 
 export default series(
+  flow,
   clean,
   parallel(scss, flowfiles, js),
   parallel(css_types_dist, css_types_src),

@@ -14,6 +14,14 @@ const CUBISM_DIST = "../cubism-react/dist";
 const GS_BUCKET_PROD = "orion-sre-datastudio-viz";
 const GS_BUCKET_DEV = "orion-sre-datastudio-viz-dev";
 
+export async function flow() {
+  await run("npx flow")();
+}
+
+export async function tests() {
+  await run("npx jest")();
+}
+
 export async function build() {
   await run("npx webpack --mode production")();
 }
@@ -32,11 +40,14 @@ export function css_types_src() {
     .pipe(dest(`${SRC}/`));
 }
 
-const build_target = parallel(
-  build,
-  build_local_dev,
-  build_dev,
-  css_types_src,
+const build_target = series(
+  parallel(flow),
+  parallel(
+    build,
+    build_local_dev,
+    build_dev,
+    css_types_src,
+  ),
 );
 
 export function watch() {

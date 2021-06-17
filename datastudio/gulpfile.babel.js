@@ -1,6 +1,7 @@
 import { dest, series, parallel, src, watch as gulp_watch } from "gulp";
 import run from "gulp-run-command";
 import gtcm from "gulp-typed-css-modules";
+import rename from "gulp-rename";
 import browserSync from "browser-sync";
 
 const browserSyncServer = browserSync.create();
@@ -21,6 +22,16 @@ export async function flow() {
 export async function tests() {
   await run("npx jest")();
 }
+
+export function docs_index() {
+  return src("README.md")
+    .pipe(rename((path, file) => {
+      path.basename = "index";
+    }))
+    .pipe(dest("docs/"));
+}
+
+export const docs = parallel(docs_index);
 
 export async function build() {
   await run("npx webpack --mode production")();
@@ -47,6 +58,7 @@ const build_target = series(
     build_local_dev,
     build_dev,
     css_types_src,
+    docs,
   ),
 );
 

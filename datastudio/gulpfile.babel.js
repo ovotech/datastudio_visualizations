@@ -11,6 +11,9 @@ const DEV_DIST = "dist_dev";
 const LOCAL_DEV_DIST = "local_dev/dist";
 const CUBISM_DIST = "../cubism-react/dist";
 
+const GS_BUCKET_PROD = "orion-sre-datastudio-viz";
+const GS_BUCKET_DEV = "orion-sre-datastudio-viz-dev";
+
 export async function build() {
   await run("npx webpack --mode production")();
 }
@@ -55,5 +58,25 @@ export function webserver() {
 }
 
 export const dev = parallel(webserver, watch);
+
+export async function upload_prod_impl() {
+  await run(`gsutil cp -a public-read ${DIST}/* gs://${GS_BUCKET_PROD}`)
+}
+
+export async function upload_dev_impl() {
+  await run(`gsutil cp -a public-read ${DEV_DIST}/* gs://${GS_BUCKET_DEV}`)
+}
+
+export const upload_prod = series(
+  css_types_src,
+  build,
+  upload_prod_impl,
+);
+
+export const upload_dev = series(
+  css_types_src,
+  build_dev,
+  upload_dev_impl,
+);
 
 export default build_target;

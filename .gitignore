@@ -1,2 +1,4 @@
 node_modules
 datastudio/dist
+datastudio/dist_dev
+datastudio/local_dev/dist

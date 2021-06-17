@@ -1,12 +1,8 @@
-declare const styles: {
-  readonly "cubismControllerScroll": string;
-  readonly "cubismController": string;
-  readonly "cubismContainer": string;
-  readonly "overlay": string;
-  readonly "timebar": string;
-  readonly "cubismGraph": string;
-  readonly "cubismDebug": string;
-  readonly "timebars": string;
-};
-export = styles;
-
+export const cubismControllerScroll: string;
+export const cubismController: string;
+export const cubismContainer: string;
+export const overlay: string;
+export const timebar: string;
+export const cubismGraph: string;
+export const cubismDebug: string;
+export const timebars: string;

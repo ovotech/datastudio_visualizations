@@ -64,11 +64,11 @@ export function watch() {
   gulp_watch(
     [`${SRC}/*.scss`, `${SRC}/*.js`],
     { ignoreInitial: false },
-    async () => await series(
+    series(
       parallel(scss, flowfiles, js),
       parallel(css_types_dist, css_types_src),
       demos,
-    )(),
+    ),
   )
 }
 

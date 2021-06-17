@@ -4,22 +4,18 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = require("./webpack.config");
 
-module.exports.output.path = path.resolve(__dirname, "./dev");
-
-module.exports.devServer = {
-  contentBase: path.resolve(__dirname, "./dev"),
-};
+module.exports.output.path = path.resolve(__dirname, "./local_dev/dist");
 
 module.exports.plugins = [
   ...module.exports.plugins,
   new webpack.NormalModuleReplacementPlugin(/@google\/dscc/, (resource) => {
-    resource.request = "./dev-google-dscc";
+    resource.request = "../local_dev/dev-google-dscc";
   }),
   ...Array.from(Object.keys(module.exports.entry)).map(
     (entry) =>
       new HtmlWebpackPlugin({
         filename: `${entry}.html`,
-        template: "src/dev.html.ejs",
+        template: "local_dev/dev.html.ejs",
         templateParameters: {
           entry,
         },
@@ -28,7 +24,7 @@ module.exports.plugins = [
   ),
   new HtmlWebpackPlugin({
     filename: "index.html",
-    template: "src/dev.index.html.ejs",
+    template: "local_dev/dev.index.html.ejs",
     templateParameters: {
       entries: Array.from(Object.keys(module.exports.entry)),
     },

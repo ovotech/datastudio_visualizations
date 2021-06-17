@@ -2,7 +2,7 @@ all:
 	npx webpack --mode development
 
 dev:
-	npx webpack serve --open --mode development --config webpack.dev.js
+	npx webpack serve --open --mode development --config webpack.local_dev.js
 
 test:
 	npx jest

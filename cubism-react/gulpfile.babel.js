@@ -36,7 +36,7 @@ export function js() {
 }
 
 export async function demos() {
-  run("npx webpack --mode development")();
+  await run("npx webpack --mode development")();
 }
 
 export async function flowfiles() {

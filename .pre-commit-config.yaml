@@ -116,5 +116,5 @@ repos:
         stages: [commit]
         language: system
         types_or: [javascript, css, scss]
-        entry: make -C datastudio all && make -C cubism-react all
+        entry: make all
         pass_filenames: false

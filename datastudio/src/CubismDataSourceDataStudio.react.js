@@ -90,6 +90,7 @@ export default class CubismDataSourceDataStudio extends React.PureComponent<
     let dataMet1Min = Infinity;
     let dataMet1Max = 0;
 
+    // $FlowExpectedError[incompatible-type]
     const dataByDim: DataUnbucketed = Immutable.Map().asMutable();
 
     for (const sample of data) {

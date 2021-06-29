@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const entry = {
   static_data: [path.resolve(__dirname, "./demos/static_data/index.js")],
   raw_graph: [path.resolve(__dirname, "./demos/raw_graph/index.js")],
+  streaming: [path.resolve(__dirname, "./demos/streaming/index.js")],
 };
 
 module.exports = {

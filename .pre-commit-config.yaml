@@ -1,0 +1,120 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.3.0
+    hooks:
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+        exclude: bootstrap/.*.yml
+      - id: debug-statements
+      - id: detect-aws-credentials
+        args: [--allow-missing-credentials]
+        exclude: |
+          (?x)(
+          )
+      - id: detect-private-key
+      - id: end-of-file-fixer
+        exclude: |
+          (?x)(
+              \.run/.*\.run\.xml$|
+              \.*/resources/config\.json$|
+              ^.*/dist/.*|
+              ^.*/docs/gen/.*|
+              ^.*/docs/.*/gen/.*|
+              \.*\.scss\.d\.ts$
+          )
+      - id: name-tests-test
+        args: [--django]
+      - id: no-commit-to-branch
+        args: [--branch, master]
+      - id: trailing-whitespace
+        exclude: |
+          (?x)(
+              ^.*/dist/.*|
+              .*/docs/gen/.*|
+              .*/docs/.*/gen/.*
+          )
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-java
+    rev: 1.3.10
+    hooks:
+      - id: validate-html
+        name: validate-html
+        stages: [commit]
+        types: [html]
+        exclude: |
+          (?x)(
+              ^cubism-react/demos/index.html$
+          )
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v2.3.0" # Use the sha or tag you want to point at
+    hooks:
+      - id: prettier
+        types: [javascript]
+        exclude: |
+          (?x)(
+              ^.*/dist/.*|
+              .*/docs/gen/.*|
+              .*/docs/.*/gen/.*
+          )
+
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        stages: [commit]
+        language: system
+        types: [python]
+        entry: pipenv run black .
+        # passing in files doesn't respect excludes
+        pass_filenames: false
+        always_run: true
+
+      - id: flake8
+        name: flake8
+        stages: [commit]
+        language: system
+        types: [python]
+        entry: pipenv run flake8
+        exclude: |
+          (?x)(
+          )
+
+      - id: isort
+        name: isort
+        stages: [commit]
+        language: system
+        types: [python]
+        # run for each file in the commit, respects skip/skip_glob filters if present in config file .isort.cfg
+        entry: pipenv run isort --filter-files
+
+      - id: shellcheck
+        name: shellcheck
+        stages: [commit]
+        language: system
+        types: [shell] # as per https://pre-commit.com/#filtering-files-with-types
+        entry: pipenv run shellcheck --enable=all --shell=bash --severity=warning
+
+      - id: terraform
+        name: terraform
+        stages: [commit]
+        language: system
+        types: [terraform]
+        # doesn't accept filename parameters
+        entry: pipenv run terraform fmt -write=true -diff -recursive
+        pass_filenames: false
+        always_run: true
+
+      - id: builds
+        name: Build Javascript Libraries
+        stages: [commit]
+        language: system
+        types_or: [javascript, css, scss]
+        entry: make all
+        pass_filenames: false

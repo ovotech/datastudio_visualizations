@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CubismApp renders correctly 1`] = `
+"<div style=\\"width: 1440px; height: 90px;\\">
+    <div>
+        <div>
+            <div style=\\"height: 40px;\\">
+                <svg width=\\"1440\\" height=\\"40\\">
+                    <g class=\\"timebars\\">
+                        <g>
+                            <text y=\\"30\\" x=\\"1391\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">07:00</text>
+                            <line x1=\\"1391\\" y1=\\"35\\" x2=\\"1391\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"1331\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">06:00</text>
+                            <line x1=\\"1331\\" y1=\\"35\\" x2=\\"1331\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"1271\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">05:00</text>
+                            <line x1=\\"1271\\" y1=\\"35\\" x2=\\"1271\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"1211\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">04:00</text>
+                            <line x1=\\"1211\\" y1=\\"35\\" x2=\\"1211\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"1151\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">03:00</text>
+                            <line x1=\\"1151\\" y1=\\"35\\" x2=\\"1151\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"1091\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">02:00</text>
+                            <line x1=\\"1091\\" y1=\\"35\\" x2=\\"1091\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"1031\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">01:00</text>
+                            <line x1=\\"1031\\" y1=\\"35\\" x2=\\"1031\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"971\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">14/06</text>
+                            <line x1=\\"971\\" y1=\\"35\\" x2=\\"971\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"911\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">23:00</text>
+                            <line x1=\\"911\\" y1=\\"35\\" x2=\\"911\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"851\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">22:00</text>
+                            <line x1=\\"851\\" y1=\\"35\\" x2=\\"851\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"791\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">21:00</text>
+                            <line x1=\\"791\\" y1=\\"35\\" x2=\\"791\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"731\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">20:00</text>
+                            <line x1=\\"731\\" y1=\\"35\\" x2=\\"731\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"671\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">19:00</text>
+                            <line x1=\\"671\\" y1=\\"35\\" x2=\\"671\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"611\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">18:00</text>
+                            <line x1=\\"611\\" y1=\\"35\\" x2=\\"611\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"551\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">17:00</text>
+                            <line x1=\\"551\\" y1=\\"35\\" x2=\\"551\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"491\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">16:00</text>
+                            <line x1=\\"491\\" y1=\\"35\\" x2=\\"491\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"431\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">15:00</text>
+                            <line x1=\\"431\\" y1=\\"35\\" x2=\\"431\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"371\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">14:00</text>
+                            <line x1=\\"371\\" y1=\\"35\\" x2=\\"371\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"311\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">13:00</text>
+                            <line x1=\\"311\\" y1=\\"35\\" x2=\\"311\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"251\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">12:00</text>
+                            <line x1=\\"251\\" y1=\\"35\\" x2=\\"251\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"191\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">11:00</text>
+                            <line x1=\\"191\\" y1=\\"35\\" x2=\\"191\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"131\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">10:00</text>
+                            <line x1=\\"131\\" y1=\\"35\\" x2=\\"131\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"71\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">09:00</text>
+                            <line x1=\\"71\\" y1=\\"35\\" x2=\\"71\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                        <g>
+                            <text y=\\"30\\" x=\\"11\\" text-anchor=\\"middle\\" style=\\"font-size: 8px;\\">08:00</text>
+                            <line x1=\\"11\\" y1=\\"35\\" x2=\\"11\\" y2=\\"40\\" stroke=\\"black\\" stroke-width=\\"1\\"></line>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <div style=\\"height: 31px;\\">
+                <canvas width=\\"1440\\" height=\\"30\\"></canvas>
+                <svg height=\\"30\\" width=\\"1440\\">
+                    <text y=\\"20\\" x=\\"8\\">PRN1</text>
+                    <text y=\\"20\\" x=\\"1440\\" text-anchor=\\"end\\"></text>
+                </svg>
+            </div>
+            <div style=\\"height: 31px;\\">
+                <canvas width=\\"1440\\" height=\\"30\\"></canvas>
+                <svg height=\\"30\\" width=\\"1440\\">
+                    <text y=\\"20\\" x=\\"8\\">PRN2</text>
+                    <text y=\\"20\\" x=\\"1440\\" text-anchor=\\"end\\"></text>
+                </svg>
+            </div>
+            <div style=\\"padding-left: 8px;\\">
+                <div>Debug:
+                    <br>
+                    <button>Show Data</button>
+                    <br>Dates: 1440
+                    <br>Min date: QuantizableDateRecord { year: 2021, month: 6, day: 13, hour:
+                    7, minute: 50, second: 0 }
+                    <br>Max date: QuantizableDateRecord { year: 2021, month: 6, day: 14, hour:
+                    7, minute: 49, second: 0 }
+                    <br>Level: Minute</div>
+            </div>
+            <svg width=\\"1440\\" height=\\"102\\">
+                <line x1=\\"-1\\" y1=\\"0\\" x2=\\"-1\\" y2=\\"102\\" stroke=\\"black\\" stroke-width=\\"1\\"
+                fill=\\"black\\"></line>
+            </svg>
+        </div>
+    </div>
+</div>"
+`;

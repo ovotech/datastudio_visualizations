@@ -31,7 +31,7 @@
     "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.2.6",
     "dateformat": "^4.5.1",
-    "electron": "^13.1.2",
+    "electron": "^22.3.25",
     "flow-bin": "^0.152.0",
     "gen-flow-files": "^0.4.11",
     "html-webpack-plugin": "^5.3.1",
